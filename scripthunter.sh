@@ -38,13 +38,11 @@ usage(){
     echo "       -s: Silent output - No banner, no progress, only urls"
 }
 
-tnotify(){
-    # Follow this to find your token and chatid
-    # https://medium.com/@ManHay_Hong/how-to-create-a-telegram-bot-and-send-messages-with-python-4cf314d9fa3e
+dnotify(){
+    #discord notify
     message=$1
-    token="CHANGEME"
-    chatid="CHANGEME"
-    curl -s -X POST https://api.telegram.org/bot$token/sendMessage -d chat_id=$chatid -d text="$message" >/dev/null
+    data="{\"content\":\"$message\"}"
+    curl -X POST -H 'Content-type: application/json' --data $data https://discord.com/api/webhooks/7650799100112 >/dev/null
 }
 if [ $# -eq 0 ] || [ "$1" = "-h" ]
   then
