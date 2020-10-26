@@ -124,7 +124,7 @@ fi
 cat $TMPDIR/results/scripts-$domain.txt | httpx -status-code -silent -no-color | grep -E '\[200\]$' | cut -d " " -f1 | tee -a $TMPDIR/results/scripts-200-$domain.txt
 responsivecount="$(wc -l $TMPDIR/results/scripts-200-$domain.txt | sed -e 's/^[[:space:]]*//' | cut -d " " -f 1)"
 
-tnotify "Scripthunter on $target done. $linecount ($responsivecount responsive) script files found"
+dnotify "Scripthunter on $target done. $linecount ($responsivecount responsive) script files found"
 if [ "$silent" = "false" ]; then
     echo "[+] All Done!"
     echo "[+] Found total of $linecount ($responsivecount responsive) scripts!"
